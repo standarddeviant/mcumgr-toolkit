@@ -26,7 +26,7 @@ impl FromPyObject<'_, '_> for Sha256 {
         // hex encoded string checksum
         if let Ok(s) = obj.cast::<PyString>() {
             let txt = s.to_str()?;
-            let mut out = [0u8; 32];
+            let mut out = [0u8; 64];
             hex::decode_to_slice(txt, &mut out)
                 .map_err(|e| PyValueError::new_err(format!("invalid sha256 hex string: {e}")))?;
 

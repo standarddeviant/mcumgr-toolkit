@@ -143,7 +143,7 @@ pub fn image_upload_max_data_chunk_size(smp_frame_size: usize) -> std::io::Resul
             data: &[0u8],
             len: Some(u64::MAX),
             image: Some(u32::MAX),
-            sha: Some(&[42; 32]),
+            sha: Some(&[42; 64]),
             upgrade: Some(true),
         },
         &mut size_counter,
@@ -494,7 +494,7 @@ mod tests {
                 data: &vec![0; max_data_size],
                 len: Some(u64::MAX),
                 image: Some(u32::MAX),
-                sha: Some(&[u8::MAX; 32]),
+                sha: Some(&[u8::MAX; 64]),
                 upgrade: Some(true),
             };
 
