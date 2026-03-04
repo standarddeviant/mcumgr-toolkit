@@ -3,7 +3,7 @@ use pyo3::prelude::*;
 use pyo3::types::{PyBytes, PyString};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub struct Sha256(pub [u8; 32]);
+pub struct Sha256(pub [u8; 64]);
 
 impl FromPyObject<'_, '_> for Sha256 {
     type Error = PyErr;

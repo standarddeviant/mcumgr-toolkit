@@ -413,7 +413,7 @@ impl MCUmgrClient {
     pub fn firmware_update(
         &self,
         firmware: impl AsRef<[u8]>,
-        checksum: Option<[u8; 32]>,
+        checksum: Option<[u8; 64]>,
         params: FirmwareUpdateParams,
         progress: Option<&mut FirmwareUpdateProgressCallback>,
     ) -> Result<(), FirmwareUpdateError> {
@@ -576,7 +576,7 @@ impl MCUmgrClient {
     /// which is used for signature verification purposes.
     pub fn image_set_state(
         &self,
-        hash: Option<[u8; 32]>,
+        hash: Option<[u8; 64]>,
         confirm: bool,
     ) -> Result<Vec<commands::image::ImageState>, MCUmgrClientError> {
         self.connection
@@ -625,7 +625,7 @@ impl MCUmgrClient {
         &self,
         data: impl AsRef<[u8]>,
         image: Option<u32>,
-        checksum: Option<[u8; 32]>,
+        checksum: Option<[u8; 64]>,
         upgrade_only: bool,
         mut progress: Option<&mut dyn FnMut(u64, u64) -> bool>,
     ) -> Result<(), MCUmgrClientError> {
@@ -637,7 +637,7 @@ impl MCUmgrClient {
 
         let data = data.as_ref();
 
-        let actual_checksum: [u8; 32] = Sha256::digest(data).into();
+        let actual_checksum: [u8; 64] = Sha256::digest(data).into();
         if let Some(checksum) = checksum {
             if actual_checksum != checksum {
                 return Err(MCUmgrClientError::ChecksumMismatch);

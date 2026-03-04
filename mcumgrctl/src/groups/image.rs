@@ -14,7 +14,7 @@ pub enum ImageCommand {
     SetState {
         /// Boot to the image with the given hash ID
         #[arg(long, value_parser=parse_sha256, required_unless_present = "confirm")]
-        hash: Option<[u8; 32]>,
+        hash: Option<[u8; 64]>,
         /// Mark the given image as confirmed
         ///
         /// If no hash is specified, confirm the currently running image
@@ -33,7 +33,7 @@ pub enum ImageCommand {
         upgrade_only: bool,
         /// SHA-256 checksum of the image file
         #[arg(long, value_parser=parse_sha256)]
-        checksum: Option<[u8; 32]>,
+        checksum: Option<[u8; 64]>,
     },
     /// Erase image slot on target device
     Erase {

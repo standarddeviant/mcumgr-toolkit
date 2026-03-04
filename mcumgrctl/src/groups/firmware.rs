@@ -49,7 +49,7 @@ pub enum FirmwareCommand {
         upgrade_only: bool,
         /// SHA-256 checksum of the image file
         #[arg(long, value_parser=parse_sha256)]
-        checksum: Option<[u8; 32]>,
+        checksum: Option<[u8; 64]>,
     },
 }
 

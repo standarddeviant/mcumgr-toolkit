@@ -83,9 +83,9 @@ pub enum FirmwareUpdateStep {
     /// A summary of what update exactly we will perform now
     UpdateInfo {
         /// The current version with the current ID hash, if available
-        current_version: Option<(String, Option<[u8; 32]>)>,
+        current_version: Option<(String, Option<[u8; 64]>)>,
         /// The new version with the new ID hash
-        new_version: (String, [u8; 32]),
+        new_version: (String, [u8; 64]),
     },
     /// Uploading the new firmware to the device
     UploadingFirmware,
@@ -163,7 +163,7 @@ const SHOWN_HASH_DIGITS: usize = 4;
 pub(crate) fn firmware_update(
     client: &MCUmgrClient,
     firmware: impl AsRef<[u8]>,
-    checksum: Option<[u8; 32]>,
+    checksum: Option<[u8; 64]>,
     params: FirmwareUpdateParams,
     mut progress: Option<&mut FirmwareUpdateProgressCallback>,
 ) -> Result<(), FirmwareUpdateError> {

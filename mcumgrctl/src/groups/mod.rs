@@ -78,7 +78,7 @@ pub fn run(
     }
 }
 
-fn parse_sha256(s: &str) -> Result<[u8; 32], hex::FromHexError> {
+fn parse_sha256(s: &str) -> Result<[u8; 64], hex::FromHexError> {
     let mut data = [0u8; 32];
     hex::decode_to_slice(s, &mut data)?;
     Ok(data)
