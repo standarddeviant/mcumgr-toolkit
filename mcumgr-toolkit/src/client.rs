@@ -588,6 +588,22 @@ impl MCUmgrClient {
             .map_err(Into::into)
     }
 
+    pub fn image_set_state_sha512(
+        &self,
+        hash: Option<[u8; 64]>,
+        confirm: bool,
+    ) -> Result<Vec<commands::image::ImageState>, MCUmgrClientError> {
+        self.connection
+            .execute_command(&commands::image::SetImageState {
+                hash: hash.as_ref(),
+                confirm,
+            })
+            .map(|val| val.images)
+            .map_err(Into::into)
+    }
+
+
+
     /// Upload a firmware image to an image slot.
     ///
     /// # Note
