@@ -78,7 +78,7 @@ fn read_u8(data: &mut dyn std::io::Read) -> Result<u8, std::io::Error> {
 const IMAGE_MAGIC: u32 = 0x96f3b83d;
 const IMAGE_TLV_INFO_MAGIC: u16 = 0x6907;
 const IMAGE_TLV_SHA256: u8 = 0x10;
-const SHA256_LEN: usize = 32;
+const SHA256_LEN: usize = 64;
 const TLV_INFO_HEADER_SIZE: u32 = 4;
 const TLV_ELEMENT_HEADER_SIZE: u32 = 4;
 

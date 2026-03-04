@@ -420,7 +420,7 @@ mod tests {
             "types" => {
                 "sha256" => {
                     "format" => 1,
-                    "size" => 32,
+                    "size" => 64,
                 },
                 "crc32" => {
                     "format" => 0,
@@ -441,7 +441,7 @@ mod tests {
                     "sha256".to_string(),
                     FileChecksumProperties{
                         format: FileChecksumDataFormat::ByteArray,
-                        size: 32,
+                        size: 64,
                     }
                 ),
             ])
